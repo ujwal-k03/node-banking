@@ -14,6 +14,10 @@ const historySchema = new Schema({
         type: Number,
         required: true,
     },
+    newbalance: {
+        type: Number,
+        required: true,
+    },
     user2name: {
         type: String,
     }

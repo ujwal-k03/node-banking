@@ -29,7 +29,6 @@ const transactionform = (req, res) => {
 const transactionpost = async (req, res) => {
     let recipient = await User.findOne({ username:  req.body.recipient});
     let sender = await User.findOne({username : req.body.sender});
-    let balance;
 
     if(!recipient || !sender)
     {
@@ -53,18 +52,20 @@ const transactionpost = async (req, res) => {
             type: "Debit",
             amount: req.body.amount,
             user2name: recipient.username,
+            newbalance: sender.balance,
         })
 
-        recipient.balance += req.body.amount;
+        recipient.balance = Number(req.body.amount) + Number(recipient.balance);
         recipient.save();
         History.create({
             username: recipient.username,
             type: "Credit",
             amount: req.body.amount,
             user2name: sender.username,
+            newbalance: recipient.balance,
         })
 
-        res.redirect('/');
+        res.redirect('/transactions');
     }
 }
 
@@ -82,16 +83,17 @@ const depositpost = async (req, res) => {
         })
     }
     else
-    {
-        user.balance += req.body.amount;
+    {   
+        user.balance = (Number(user.balance) + Number(req.body.amount));
         user.save();
 
         History.create({
             username: user.username,
             type: "Deposit",
             amount: req.body.amount,
+            newbalance: user.balance,
         })
-        res.redirect('/');
+        res.redirect('/transactions');
     }
 }
 
@@ -124,7 +126,7 @@ const withdrawpost = async (req, res) => {
             type: "Withdraw",
             amount: req.body.amount,
         })
-        res.redirect('/');
+        res.redirect('/transactions');
     }
 }
 
