@@ -8,11 +8,15 @@ app.set('view engine', 'ejs');
 
 const dbURI = "mongodb+srv://ujwal:testing123@banking.inzqyzd.mongodb.net/?retryWrites=true&w=majority"
 
-mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(dbURI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  dbName: 'node-banking',
+})
   .then(result => app.listen(3000))
   .catch(err => console.log(err));
 
-app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.use('/auth', authRoutes);
 

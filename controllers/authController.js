@@ -4,9 +4,9 @@ const user_register = async (req, res) => {
     console.log("hi");
     const { username, password } = req.body;
 
-    // if (password.length < 6) {
-    //     return res.status(400).json({ message: "Password less than 6 characters" })
-    // }
+    if (password.length < 6) {
+        return res.status(400).json({ message: "Password less than 6 characters" })
+    }
 
     try {
         await User.create( {username, password} )
