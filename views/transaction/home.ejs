@@ -1,0 +1,23 @@
+<html lang="en">
+<%- include("../partials/head.ejs") %>
+
+<body>
+    <%- include("../partials/nav.ejs") %>
+    <a href="/transaction/new">
+        <p>New transaction</p>
+    </a>
+    <a href="/transaction/withdraw">
+        <p>Withdraw money</p>
+    </a>
+    <a href="/transaction/deposit">
+        <p>Deposit money</p>
+    </a>
+    <p>Transaction history of User</p>
+    <form action="/transaction/history" method="post">
+        <label for="username">Username</label>
+            <input type="text" name="username" id="username">
+        <button>Search</button>
+    </form>
+
+</body>
+</html>

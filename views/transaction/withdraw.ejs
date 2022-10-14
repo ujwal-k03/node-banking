@@ -1,0 +1,15 @@
+<html lang="en">
+<%- include("../partials/head.ejs") %>
+
+<body>
+    <%- include("../partials/nav.ejs") %>
+    <h1>Withdraw money</h1>
+    <form action="/transaction/withdraw" method="post">
+        <label for="user">User</label>
+            <input type="text" name="user" id="user">
+        <label for="amt">Amount</label>
+            <input type="number" name="amount" id="amt"> 
+        <button>Submit</button>
+    </form>
+</body>
+</html>

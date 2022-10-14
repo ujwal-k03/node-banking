@@ -1,0 +1,26 @@
+<html lang="en">
+<%- include("../partials/head.ejs") %>
+
+<body>
+    <%- include("../partials/nav.ejs") %>
+    <h1>Transaction history of <%= user.username %> </h1>
+    <p>User balance: <%= user.balance %> </p>
+    <% if (results.length > 0) { %>
+        <ol>
+            <% results.forEach(history => { %>
+                <li>
+                    <p>User: <%= history.username %> </p>
+                    <p>Type: <%= history.type %> </p>
+                    <% if (history.user2name) { %> 
+                        <p>User2: <%= history.user2name %> </p>
+                    <% } %> 
+                    <p>Amount: <%= history.amount %> </p>
+                </li>  
+            <% }) %> 
+        </ol>
+    <% } else {%>
+            <p>No transactions for this user</p>
+    <% } %>
+        
+</body>
+</html>

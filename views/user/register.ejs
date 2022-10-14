@@ -1,0 +1,12 @@
+<html lang="en">
+<%- include("../partials/head.ejs") %>
+
+<body>
+    <%- include("../partials/nav.ejs") %>
+    <form action="/user/register" method="post">
+        <label for="user">Username</label> <input type="text" name="username" id="user">
+        <label for="amt">Initial Balance</label> <input type="number" name="amount" id="amt"> 
+        <button>Submit</button>
+    </form>
+</body>
+</html>

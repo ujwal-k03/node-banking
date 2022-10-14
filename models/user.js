@@ -7,11 +7,6 @@ const userSchema = new Schema({
     unique: true,
     required: true,
   },
-  password: {
-    type: String,
-    minlength: 6,
-    required: true,
-  },
   balance: {
     type: Number,
     default: 0,

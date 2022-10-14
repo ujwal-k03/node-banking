@@ -1,0 +1,14 @@
+<html lang="en">
+<%- include("../partials/head.ejs") %>
+
+<body>
+    <%- include("../partials/nav.ejs") %>
+    <h1>New transaction</h1>
+    <form action="/transaction/new" method="post">
+        <label for="sen">Sender</label> <input type="text" name="sender" id="sen">
+        <label for="rec">Recipient</label> <input type="text" name="recipient" id="rec">
+        <label for="amt">Amount</label> <input type="number" name="amount" id="amt"> 
+        <button>Submit</button>
+    </form>
+</body>
+</html>
